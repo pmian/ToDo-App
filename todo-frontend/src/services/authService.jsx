@@ -1,6 +1,7 @@
 import axios from "axios";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-const API_URL = "http://localhost:5000/api/auth"; // Update with your backend URL
+const API_URL = `${BACKEND_URL}/api/auth`; // Update with your backend URL
 
 // ✅ Fetch user data from token
 export const getUser = async (token) => {

@@ -10,6 +10,7 @@ function Login() {
     const [error, setError] = useState("");
     const { user, login } = useAuth();
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     // ✅ Use useEffect to redirect if user is logged in
     useEffect(() => {
@@ -21,7 +22,7 @@ function Login() {
     const handleLogin = async ({ email, password }) => {
         setError("");
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", {
+            const response = await axios.post(`${BACKEND_URL}/api/auth/login`, {
                 email,
                 password,
             });

@@ -10,12 +10,13 @@ export const AuthProvider = ({ children }) => {
   });
   const [token, setToken] = useState(localStorage.getItem("authToken") || "");
   const navigate = useNavigate();
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   // On mount, if there's a token, fetch the user details
   useEffect(() => {
     if (token && !user) {
       axios
-        .get("http://localhost:5000/api/auth/me", {
+        .get(`${Backend_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
